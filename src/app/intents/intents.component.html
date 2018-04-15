@@ -1,0 +1,118 @@
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<div class="row">
+  <div class="col-md-7">    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>Intents</h4>
+            </div>
+            <div class="col-md-2">  
+              <button class="btn btn-link" (click)="onAddItem()">Add Intent</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">    
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-hover" id="myTable">
+              <thead><tr><th>Title</th><th>Purpose</th><th></th><th></th><th></th><th></th></tr></thead>
+              <tbody>
+              <tr *ngFor="let intent of intents; let i = index" [attr.data-index]="i">
+                <td width="20%">{{ intent.title }}</td>
+                <td width="50%">{{ intent.purpose }}</td>
+                <td width="10%">
+                  <a style="cursor: pointer" (click)="manageQuery(intent)">Query</a>
+                </td>
+                <td width="5%">
+                  <a title="Edit" style="cursor: pointer" (click)="onEditItem(intent)"><i class="glyphicon glyphicon-edit"></i></a>
+                </td>
+                <td width="5%">
+                  <a title="Delete" style="cursor: pointer" (click)="onDeleteIntent(i)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-5">
+    <div *ngIf="iFlag==true" class="panel panel-default">
+      <div class="panel-heading">
+         <div class="row">
+            <div class="col-md-8">
+              <h4 *ngIf="editMode==true">Edit Intent</h4>
+              <h4 *ngIf="editMode==false">Add Intent</h4>
+            </div>
+          </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                  <input type="text" placeholder="Intent Title" [(ngModel)]="editedItem.title" class="form-control">
+                </div>
+            </div>      
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                  <input type="text" placeholder="Define Purpose" [(ngModel)]="editedItem.purpose" class="form-control">
+                </div>
+            </div>      
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" (click)="onSave()">Save</button>
+            </div>
+        </div>                    
+      </div>
+    </div>
+    <div *ngIf="qFlag==true" class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8">
+            <h4>{{editedItem.title}} - Query</h4>
+          </div>
+          <div class="col-md-4">  
+            <button class="btn btn-link" (click)="reloadTraining()">Refresh Training</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">    
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                  <input type="text" placeholder="Your query" [(ngModel)]="queryItem.text" class="form-control">
+                </div>
+            </div>      
+            <div *ngIf="editMode==false" class="col-md-2">
+                <button class="btn btn-primary" (click)="onSaveQuery()">Add</button>
+            </div>
+            <div *ngIf="editMode==true" class="col-md-2">
+                <button class="btn btn-primary" (click)="onSaveQuery()">Save</button>
+            </div>
+        </div> 
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-hover" id="queryTable">
+              <tbody>
+              <tr *ngFor="let q of editedItem.query; let i = index" [attr.data-index]="i">
+                <td width="90%">{{ q.text }}</td>
+                <td width="5%">
+                  <a title="Edit" style="cursor: pointer" (click)="onQueryEdit(q)"><i class="glyphicon glyphicon-edit"></i></a>
+                </td>
+                <td width="5%">
+                  <a title="Delete" style="cursor: pointer" (click)="onDeleteIntentQuery(i)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

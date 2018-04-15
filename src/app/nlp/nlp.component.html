@@ -1,0 +1,48 @@
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<div class="row">
+  <div class="col-md-7"> 
+    <div class="panel panel-default">
+    <div class="panel-body">
+        <div class="chatbox">
+          <div class="row">    
+            <div class="col-md-12">
+              <div class="chatlogs" id="mychat">
+                <div *ngFor="let om of outMessages"> 
+                    <div *ngIf="om.cls=='S'" class="chat self">
+                      <div class="user-photo"></div>
+                      <p class="chat-message">{{om.txt}}</p>
+                    </div>
+                    <div *ngIf="om.cls=='F'" class="chat friend">
+                      <div class="user-photo"></div>
+                      <p class="chat-message">{{om.txt}}</p>
+                    </div>
+                </div>
+                <br><br><br><br> 
+              </div>
+            </div>
+          </div>
+          <div class="row"> 
+          <form [formGroup]="chatForm" (ngSubmit)="predictQuery()">   
+            <div class="col-md-10">
+              <div class="form-group">
+                <input formControlName="query" type="text" placeholder="Your the queries" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-2" align="left">
+                <button class="btn btn-primary" type="submit">Send</button>
+            </div> 
+          </form>   
+          </div>
+        </div>
+    </div>
+    </div>   
+  </div>
+  <div class="col-md-5">
+    <div class="panel panel-success" *ngIf="resOutput!=''">
+      <div class="panel-heading">NLP Output</div>  
+      <div class="panel-body">
+        <pre>{{resOutput}}</pre>
+      </div>
+    </div>  
+  </div>
+</div>

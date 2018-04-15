@@ -1,0 +1,53 @@
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<div class="row">
+  <div class="col-md-7">    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <h4>Sample Data</h4>
+            </div>
+            <div class="col-md-2">  
+              <button class="btn btn-link" (click)="downloadData()">Download</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">    
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-hover" id="myTable">
+              <thead><tr><th>Regular Statements</th><th></th></tr></thead>
+              <tbody>
+              <tr *ngFor="let item of pagedItems">
+                <td>{{ item.query }}</td>
+                <td>
+                    <a title="Delete" style="cursor: pointer" (click)="onDeleteItem(item.id)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+
+              </tr>
+              </tbody>
+              </table>
+                         <!-- pager -->
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">First</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

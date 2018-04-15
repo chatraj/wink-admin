@@ -1,0 +1,127 @@
+<app-header (featureSelected)="onNavigate($event)"></app-header>
+<div class="row">
+  <div class="col-md-5">    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-9">
+              <h4>Dialogs</h4>
+            </div>
+            <div class="col-md-3">  
+              <button class="btn btn-link" (click)="onAddItem()">Add Dialog</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">    
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-hover" id="myTable">
+              <thead><tr><th>Intent</th><th></th><th></th><th></th></tr></thead>
+              <tbody>
+              <tr *ngFor="let dialog of dialogs; let i = index" [attr.data-index]="i">
+                <td width="20%">{{ dialog.intent }}</td>
+                <td width="10%">
+                  <a style="cursor: pointer" (click)="manageDialog(dialog)">Response</a>
+                </td>
+                <td width="5%">
+                  <a title="Edit" style="cursor: pointer" (click)="onEditItem(dialog)"><i class="glyphicon glyphicon-edit"></i></a>
+                </td>
+                <td width="5%">
+                  <a title="Delete" style="cursor: pointer" (click)="onDeleteDialog(i)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+              </tr>
+              </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-7">
+    <div *ngIf="dFlag==true" class="panel panel-default">
+      <div class="panel-heading">
+         <div class="row">
+            <div class="col-md-8">
+              <h4 *ngIf="editMode==true">Edit Dialog</h4>
+              <h4 *ngIf="editMode==false">Add New Dialog</h4>
+            </div>
+          </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                  <input type="text" placeholder="Intent" [(ngModel)]="editedItem.intent" class="form-control">
+                </div>
+            </div>      
+            <div class="col-md-3">
+                <button class="btn btn-primary" (click)="onSave()">Save</button>
+            </div>
+        </div>            
+      </div>
+    </div>
+    <div *ngIf="rFlag==true" class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-9">
+            <h4>Response - {{editedItem.intent}}</h4>
+          </div>
+          <div class="col-md-3">  
+            <button class="btn btn-link" (click)="reloadTraining()">Refresh Training</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body"> 
+      <form class="example-form" [formGroup]="dialogForm" (ngSubmit)="onSaveDialog()">
+        <div class="row">
+          <div class="col-md-10">
+            <mat-form-field class="example-full-width">
+              <input type="text" placeholder="Entity Type" aria-label="Entity Type" matInput formControlName="entityType" [matAutocomplete]="auto">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let entity of filteredEntities | async" [value]="entity.entityType">
+                  {{ entity.entityType }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>      
+          <div class="col-md-2">
+          </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-10">
+              <mat-form-field class="example-full-width">
+                  <input type="text" placeholder="Response" aria-label="Response" matInput formControlName="response">
+              </mat-form-field>
+            </div>      
+            <div *ngIf="editMode==false" class="col-md-2">
+                <button class="btn btn-primary" id="add-btn" type="submit">Add</button>
+            </div>
+            <div *ngIf="editMode==true" class="col-md-2">
+                <button class="btn btn-primary" id="save-btn" type="submit">Save</button>
+            </div>
+        </div>
+      </form>
+ 
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-hover" id="queryTable">
+              <thead><tr><th>Entity Type</th><th>Response</th><th></th><th></th></tr></thead>
+              <tbody>
+              <tr *ngFor="let drec of editedItem.dialog; let i = index" [attr.data-index]="i">
+                <td width="20%">{{ drec.entityType }}</td>
+                <td width="70%">{{ drec.response }}</td>
+                <td width="5%">
+                  <a title="Edit" style="cursor: pointer" (click)="onEditDialog(drec)"><i class="glyphicon glyphicon-edit"></i></a>
+                </td>
+                <td width="5%">
+                  <a title="Delete" style="cursor: pointer" (click)="onDeleteResponse(i)"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
