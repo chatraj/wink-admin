@@ -1,14 +1,16 @@
 {
   "name": "wink-admin",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.0",
+  "description": "Wink Admin Application",
+  "main": "server.js",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chatraj",
+  "license": "ISC",
+  "engines": {
+    "node": "8.9.3",
+    "npm": "5.6.0"
   },
   "private": true,
   "dependencies": {
