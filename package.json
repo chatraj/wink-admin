@@ -2,14 +2,9 @@
   "name": "wink-admin",
   "version": "1.0.0",
   "description": "Wink Admin Application",
+  "main": "server.js",
   "scripts": {
-    "ng": "ng",
-    "start": "node server.js",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "chatraj",
   "license": "ISC",
