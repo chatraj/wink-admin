@@ -1,0 +1,4 @@
+# File to be ignored for heroku runtime
+/e2e
+/server
+/src
