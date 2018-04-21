@@ -2,9 +2,14 @@
   "name": "wink-admin",
   "version": "1.0.0",
   "description": "Wink Admin Application",
-  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ng": "ng",
+    "start": "node server.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "author": "chatraj",
   "license": "ISC",
@@ -17,7 +22,9 @@
     "@angular/animations": "^5.2.0",
     "@angular/cdk": "^5.2.4",
     "@angular/common": "^5.2.0",
+    "@angular/cli": "~1.7.3",
     "@angular/compiler": "^5.2.0",
+    "@angular/compiler-cli": "^5.2.0",
     "@angular/core": "^5.2.0",
     "@angular/forms": "^5.2.0",
     "@angular/http": "^5.2.0",
@@ -36,7 +43,8 @@
     "wink-ner": "^0.2.1",
     "wink-nlp-utils": "^1.7.1",
     "wink-tokenizer": "^3.0.0",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.3",
