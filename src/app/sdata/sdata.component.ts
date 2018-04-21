@@ -22,10 +22,10 @@ export class SdataComponent implements OnInit {
 
    // array of all items to be paged
     private allItems: any[];
- 
+
     // pager object
     pager: any = {};
- 
+
     // paged items
     pagedItems: any[];
 
@@ -34,7 +34,7 @@ export class SdataComponent implements OnInit {
 
   ngOnInit() {
     this.getQueryList();
-    
+
     this.subscription = this.sdataService.queryChanged
       .subscribe(
         () => {
@@ -53,7 +53,7 @@ export class SdataComponent implements OnInit {
           this.queries = queries;
           // set items to json response
           this.allItems = queries;
- 
+
           // initialize to page 1
           this.setPage(1);
         },
@@ -61,17 +61,18 @@ export class SdataComponent implements OnInit {
       );
   }
 
-  /*downloadData(){
-    var options = { 
+  downloadData(){
+  /*  var options = {
     fieldSeparator: ',',
     quoteStrings: '"',
     decimalseparator: '.',
-    showLabels: false, 
+    showLabels: false,
     showTitle: false
     };
     new Angular2Csv(this.queries, 'Sample Data',options);
     //new Angular2Csv(dummyData, 'My Report',options);
-  }*/
+    */
+  }
 
   onDeleteItem(id:string) {
     console.log("Delete item for :- " + id);
@@ -88,10 +89,10 @@ export class SdataComponent implements OnInit {
         if (page < 1 || page > this.pager.totalPages) {
             return;
         }
- 
+
         // get pager object from service
         this.pager = this.pagerService.getPager(this.allItems.length, page);
- 
+
         // get current page of items
         this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
     }

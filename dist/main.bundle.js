@@ -1670,17 +1670,18 @@ var SdataComponent = /** @class */ (function () {
             _this.setPage(1);
         }, function (error) { return console.log(error); });
     };
-    /*downloadData(){
-      var options = {
-      fieldSeparator: ',',
-      quoteStrings: '"',
-      decimalseparator: '.',
-      showLabels: false,
-      showTitle: false
-      };
-      new Angular2Csv(this.queries, 'Sample Data',options);
-      //new Angular2Csv(dummyData, 'My Report',options);
-    }*/
+    SdataComponent.prototype.downloadData = function () {
+        /*  var options = {
+          fieldSeparator: ',',
+          quoteStrings: '"',
+          decimalseparator: '.',
+          showLabels: false,
+          showTitle: false
+          };
+          new Angular2Csv(this.queries, 'Sample Data',options);
+          //new Angular2Csv(dummyData, 'My Report',options);
+          */
+    };
     SdataComponent.prototype.onDeleteItem = function (id) {
         var _this = this;
         console.log("Delete item for :- " + id);
