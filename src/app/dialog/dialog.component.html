@@ -1,18 +1,18 @@
-<app-header (featureSelected)="onNavigate($event)"></app-header>
+<app-header></app-header>
 <div class="row">
-  <div class="col-md-5">    
+  <div class="col-md-5">
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-9">
               <h4>Dialogs</h4>
             </div>
-            <div class="col-md-3">  
+            <div class="col-md-3">
               <button class="btn btn-link" (click)="onAddItem()">Add Dialog</button>
             </div>
           </div>
         </div>
-        <div class="panel-body">    
+        <div class="panel-body">
           <div class="row">
             <div class="col-md-12">
               <table class="table table-hover" id="myTable">
@@ -53,11 +53,11 @@
                 <div class="form-group">
                   <input type="text" placeholder="Intent" [(ngModel)]="editedItem.intent" class="form-control">
                 </div>
-            </div>      
+            </div>
             <div class="col-md-3">
                 <button class="btn btn-primary" (click)="onSave()">Save</button>
             </div>
-        </div>            
+        </div>
       </div>
     </div>
     <div *ngIf="rFlag==true" class="panel panel-default">
@@ -66,12 +66,12 @@
           <div class="col-md-9">
             <h4>Response - {{editedItem.intent}}</h4>
           </div>
-          <div class="col-md-3">  
+          <div class="col-md-3">
             <button class="btn btn-link" (click)="reloadTraining()">Refresh Training</button>
           </div>
         </div>
       </div>
-      <div class="panel-body"> 
+      <div class="panel-body">
       <form class="example-form" [formGroup]="dialogForm" (ngSubmit)="onSaveDialog()">
         <div class="row">
           <div class="col-md-10">
@@ -83,16 +83,16 @@
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
-          </div>      
+          </div>
           <div class="col-md-2">
           </div>
-        </div> 
+        </div>
         <div class="row">
             <div class="col-md-10">
               <mat-form-field class="example-full-width">
                   <input type="text" placeholder="Response" aria-label="Response" matInput formControlName="response">
               </mat-form-field>
-            </div>      
+            </div>
             <div *ngIf="editMode==false" class="col-md-2">
                 <button class="btn btn-primary" id="add-btn" type="submit">Add</button>
             </div>
@@ -101,7 +101,7 @@
             </div>
         </div>
       </form>
- 
+
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover" id="queryTable">

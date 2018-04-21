@@ -1,18 +1,18 @@
-<app-header (featureSelected)="onNavigate($event)"></app-header>
+<app-header></app-header>
 <div class="row">
-  <div class="col-md-7">    
+  <div class="col-md-7">
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
             <div class="col-md-10">
               <h4>Entities</h4>
             </div>
-            <div class="col-md-2">  
+            <div class="col-md-2">
               <button class="btn btn-link" (click)="onAddItem()">Add Entity</button>
             </div>
           </div>
         </div>
-        <div class="panel-body">    
+        <div class="panel-body">
           <div class="row">
             <div class="col-md-12">
               <table class="table table-hover" id="myTable">
@@ -44,26 +44,26 @@
           <div class="col-md-8">
             <h4>Inputs - {{editedItem.entityType}}</h4>
           </div>
-          <div class="col-md-4">  
+          <div class="col-md-4">
             <button class="btn btn-link" (click)="reloadTraining()">Refresh Training</button>
           </div>
         </div>
       </div>
 
-      <div class="panel-body" *ngIf="editedItem.repository=='local'">    
+      <div class="panel-body" *ngIf="editedItem.repository=='local'">
         <div class="row">
             <div class="col-md-10">
                 <div class="form-group">
                   <input type="text" placeholder="Your input" [(ngModel)]="inputItem.text" class="form-control">
                 </div>
-            </div>      
+            </div>
             <div *ngIf="editMode==false" class="col-md-2">
                 <button class="btn btn-primary" (click)="onSaveInput()">Add</button>
             </div>
             <div *ngIf="editMode==true" class="col-md-2">
                 <button class="btn btn-primary" (click)="onSaveInput()">Save</button>
             </div>
-        </div>   
+        </div>
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover" id="queryTable">
@@ -82,8 +82,8 @@
           </div>
         </div>
       </div>
-      
-      <div class="panel-body" *ngIf="editedItem.repository=='remote'">    
+
+      <div class="panel-body" *ngIf="editedItem.repository=='remote'">
         <div class="row">
           <div class="col-md-12">
             <table class="table table-hover" id="queryTable">
